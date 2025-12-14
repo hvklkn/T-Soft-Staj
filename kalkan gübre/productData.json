@@ -1,0 +1,19 @@
+[
+  { "id": 1, "name": "DAP 18-46 Gübre", "price": 1450, "category": "fosforlu", "img": "img/dap18-46.jpg" },
+  { "id": 2, "name": "Üre Gübre %46", "price": 1320, "category": "azotlu", "img": "img/toros-ure.jpg" },
+  { "id": 3, "name": "Amonyum Nitrat %33", "price": 1180, "category": "azotlu", "img": "img/an33.jpg" },
+  { "id": 4, "name": "Amonyum Sülfat", "price": 1050, "category": "azotlu", "img": "img/as21.jpg" },
+
+  { "id": 5, "name": "20-20-20 NPK Gübre", "price": 1560, "category": "kompoze", "img": "img/np2020.jpg" },
+  { "id": 6, "name": "15-15-15 Kompoze Gübre", "price": 1490, "category": "kompoze", "img": "img/npk1515.jpg" },
+
+  { "id": 7, "name": "Potasyum Nitrat", "price": 1680, "category": "potasyum", "img": "img/potasyumnitrat.jpg" },
+  { "id": 8, "name": "Potasyum Sülfat", "price": 1720, "category": "potasyum", "img": "img/potasyumsulfat.jpg" },
+
+  { "id": 9, "name": "Triple Süper Fosfat (TSP)", "price": 1380, "category": "fosforlu", "img": "img/TPS-1.jpg" },
+  { "id": 10, "name": "Kalsiyum Nitrat", "price": 1620, "category": "azotlu", "img": "img/can.jpg" },
+
+  { "id": 11, "name": "Magnezyum Sülfat", "price": 920, "category": "mikro", "img": "img/magnezyum-sulfat-1.jpg" }
+  
+  
+]

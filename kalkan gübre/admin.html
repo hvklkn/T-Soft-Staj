@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Paneli</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <img src="img/logo.png">
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+    </nav>
+</header>
+
+<section class="admin-box" style="max-width:600px;margin:50px auto;">
+    <h2>ÜRÜN EKLE</h2>
+
+    <input id="name" placeholder="Ürün adı">
+    <input id="price" type="number" placeholder="Fiyat">
+    <input id="img" placeholder="Görsel URL">
+    <textarea id="desc" placeholder="Açıklama"></textarea>
+
+    <button onclick="addProduct()">Kaydet</button>
+
+    <h2>MEVCUT ÜRÜNLER</h2>
+    <div id="productList"></div>
+</section>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

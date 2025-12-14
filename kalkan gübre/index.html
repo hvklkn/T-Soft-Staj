@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkan Gübre – Ana Sayfa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="main-header">
+    <div class="header-left">
+        <a href="index.html" class="logo-area">
+            <img src="img/logo.png" alt="Kalkan Gübre Logo">
+            <span class="logo-text">Kalkan Gübre</span>
+        </a>
+    </div>
+
+    <nav class="header-nav" id="mobileMenu">
+        <a href="#">Ana Sayfa</a> 
+        <a href="#products">Ürünler</a>
+        <a href="#about">Hakkımızda</a>
+        <a href="#contact">İletişim</a>
+
+        <!-- MOBİL SEPET -->
+        <a href="javascript:void(0)" class="mobile-cart" onclick="toggleCart(event)">
+            🛒 Sepet (<span id="cart-count">0</span>)
+        </a>
+    </nav>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- ================= SLIDER ================= -->
+<div class="slider-container">
+    <div class="slider">
+        <div class="slide">
+            <img src="img/slider.jpg">
+            <div class="slide-text">
+                <h2>Kaliteli Gübre Çözümleri</h2>
+                <p>Verimi artıran organik ve kimyasal gübreler</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="img/slider2.jpg">
+            <div class="slide-text">
+                <h2>KALKAN GÜBRE</h2>
+                <p>Çiftçimizin verimi bizim önceliğimizdir</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="img/slider3.jpg">
+            <div class="slide-text">
+                <h2>Uygun Fiyat – Yüksek Performans</h2>
+                <p>En iyi ürünleri en iyi fiyatlarla</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="prev" onclick="prevSlide()">❮</button>
+    <button class="next" onclick="nextSlide()">❯</button>
+</div>
+
+<!-- ================= ARAMA ================= -->
+<div class="search-box">
+    <input id="searchInput" placeholder="Ürün ara..." onkeyup="searchProduct()">
+</div>
+
+<p id="noResult" style="display:none;text-align:center;font-weight:bold;">
+    Aradığınız ürüne ait sonuç bulunamadı.
+</p>
+
+<!-- ================= KATEGORİ ================= -->
+<div class="category-bar">
+    <button onclick="filterCategory('all')">Tümü</button>
+    <button onclick="filterCategory('azotlu')">Azotlu</button>
+    <button onclick="filterCategory('fosforlu')">Fosforlu</button>
+    <button onclick="filterCategory('potasyum')">Potasyum</button>
+    <button onclick="filterCategory('organik')">Organik</button>
+    <button onclick="filterCategory('mikro')">Mikro</button>
+    <button onclick="filterCategory('kompoze')">Kompoze</button>
+</div>
+
+<div style="text-align:center;margin-bottom:20px;">
+    <select onchange="sortProducts(this.value)">
+        <option value="">Fiyata Göre Sırala</option>
+        <option value="asc">Ucuzdan Pahalıya</option>
+        <option value="desc">Pahalıdan Ucuza</option>
+    </select>
+</div>
+
+<!-- ================= ÜRÜNLER ================= -->
+<section class="products" id="products"></section>
+
+<!-- ================= HAKKIMIZDA ================= -->
+<section id="about" class="about-section fade-section">
+
+    <div class="about-container">
+
+        <div class="about-text">
+            <h2>Hakkımızda</h2>
+
+            <p class="about-slogan">
+                Toprağa değer katan çözümler, güçlü hasatlar.
+            </p>
+
+            <p>
+                <strong>Kalkan Gübre</strong>, yıllardır Türk çiftçisinin yanında yer alan,
+                tarımsal üretimde verimi ve kaliteyi artırmayı hedefleyen bir gübre
+                tedarikçisidir.
+            </p>
+
+            <p>
+                Azotlu, fosforlu, potasyumlu, kompoze ve organik gübre çeşitlerimiz ile
+                farklı toprak yapıları ve ürün desenlerine özel çözümler sunuyoruz.
+                Ürünlerimiz kalite standartlarına uygun, güvenilir ve yüksek performanslıdır.
+            </p>
+
+            <ul class="about-list">
+                <li>✔ Sertifikalı ve kaliteli ürünler</li>
+                <li>✔ Uygun fiyat – yüksek verim</li>
+                <li>✔ Çiftçi odaklı hizmet anlayışı</li>
+                <li>✔ Sürekli gelişen ürün portföyü</li>
+            </ul>
+        </div>
+
+        <div class="about-stats">
+            <div class="stat-box">
+                <h3 class="counter" data-target="25">0</h3>
+                <p>Yıllık Deneyim</p>
+        </div>
+        <div class="stat-box">
+            <h3 class="counter" data-target="20">0</h3>
+            <p>Ürün Çeşidi</p>
+        </div>
+            <div class="stat-box">
+            <h3 class="counter" data-target="1000">0</h3>
+            <p>Mutlu Çiftçi</p>
+        </div>
+    </div>
+
+
+    </div>
+</section>
+
+
+<!-- ================= SEPET OVERLAY ================= -->
+<div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+
+<!-- ================= SEPET ================= -->
+<div class="cart" id="cart" onclick="event.stopPropagation()">
+    <h3>Sepet</h3>
+    <div id="cartItems"></div>
+
+    <div class="cart-footer">
+        <p>Toplam: <strong id="totalPrice">0</strong> ₺</p>
+        <button onclick="clearCart(event)">Temizle</button>
+        <button onclick="sendOrder()" style="margin-top:10px;background:#25D366;">
+            WhatsApp ile Sipariş Ver
+        </button>
+    </div>
+</div>
+
+<!-- ================= İLETİŞİM ================= -->
+<section id="contact" class="contact-section">
+    <h2 class="section-title">İletişim</h2>
+
+    <div class="contact-wrapper">
+
+        <!-- İLETİŞİM + FORM -->
+        <div class="contact-card">
+            <h3>Kalkan Gübre</h3>
+
+            <p>
+                📞 <strong>Telefon</strong><br>
+                <a href="tel:+905327384119">0532 738 41 19</a>
+            </p>
+
+            <p>
+                📧 <strong>E-posta</strong><br>
+                <a href="mailto:info@kalkangubre.com">info@kalkangubre.com</a>
+            </p>
+
+            <p>
+                📍 <strong>Adres</strong><br>
+                Türkiye
+            </p>
+
+            <a class="contact-whatsapp" href="https://wa.me/905327384119" target="_blank">
+                WhatsApp ile İletişime Geç
+            </a>
+
+            <!-- ===== İLETİŞİM FORMU ===== -->
+            <form id="contactForm" style="margin-top:25px;">
+                <h3>Bize Ulaşın</h3>
+
+                <input type="text" id="cName" placeholder="Ad Soyad">
+                <input type="tel" id="cPhone" placeholder="Telefon">
+                <textarea id="cMessage" placeholder="Mesajınız"></textarea>
+
+                <button type="submit">WhatsApp ile Gönder</button>
+
+                <p id="formSuccess" style="display:none;color:#2e7d32;font-weight:bold;margin-top:10px;">
+                    Mesaj hazırlanıyor...
+                </p>
+            </form>
+        </div>
+
+        <!-- HARİTA -->
+        <div class="contact-map">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d940.2239605955963!2d36.92033555647859!3d37.56628097147679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x152dddb0f61a07cd%3A0x1c02f59361138ab0!2s%C5%9Eazi%20Bey%2C%203.%20Toptanc%C4%B1lar%20Cd.%2C%2046040%20Kahramanmara%C5%9F%20Merkez%2FKahramanmara%C5%9F!5e0!3m2!1str!2str!4v1765710121700!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+    <div class="footer-container">
+
+        <!-- SOL -->
+        <div class="footer-about">
+            <h3>Kalkan Gübre</h3>
+            <p>
+                Tarımsal üretimde verimi artıran,
+                kaliteli ve güvenilir gübre çözümleri sunar.
+            </p>
+        </div>
+
+        <!-- ORTA -->
+        <div class="footer-links">
+            <h4>Hızlı Menü</h4>
+            <a href="#">Ana Sayfa</a>
+            <a href="#products">Ürünler</a>
+            <a href="#about">Hakkımızda</a>
+            <a href="#contact">İletişim</a>
+        </div>
+
+        <!-- SAĞ -->
+        <div class="footer-contact">
+            <h4>İletişim</h4>
+            <p>📞 0532 738 41 19</p>
+            <p>📧 info@kalkangubre.com</p>
+            <p>📍 Şazibey Mahallesi 3.Toptancılar Sitesi No:24   Onikişubat / Kahramanmaraş</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © <span id="year"></span> Kalkan Gübre | Tüm Hakları Saklıdır
+    </div>
+</footer>
+
+
+
+<a class="whatsapp-btn" href="https://wa.me/905327384119">📞 WhatsApp Sipariş</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>
